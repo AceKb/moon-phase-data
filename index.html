@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroDash</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      :root {
+          --fbc-blue-60: #f30606;
+          --fbc-blue-70: #beb6bc;
+          --fbc-gray-20: #ededf0;
+          --fbc-light-gray: #F0F0F4;
+          --fbc-white: #ffffff;
+          --fbc-transition: all .15s cubic-bezier(.07,.95,0,1);
+          --fbc-borders: 1px solid #ededf0;
+          --fbc-primary-text: #15141A;
+          --fbc-secondary-text: #5B5B66;
+          --fbc-font-size: 13px;
+      }
+
+      body {
+          background: url('./src/components/galaxypoto.jpeg') no-repeat center center fixed;
+          background-size: cover;  
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+
+      .container {
+          display: flex;
+          height: 100vh;
+          overflow: hidden; /* Prevent overflow */
+      }
+
+      .sidebar {
+          background-color: rgba(240, 240, 240, 0.8); /* Light grey transparent */
+          color: var(--fbc-primary-text);
+          padding: 20px;
+          width: 250px;
+          display: flex;
+          flex-direction: column; /* Align items vertically */
+      }
+
+      .sidebar h1 {
+          font-size: 24px;
+          margin-bottom: 20px;
+      }
+
+      .sidebar nav ul {
+          list-style-type: none;
+          padding: 0;
+          flex-grow: 1; /* Allow nav to grow */
+      }
+
+      .sidebar nav ul li {
+          margin: 10px 0;
+      }
+
+      .sidebar nav ul li a {
+          color: var(--fbc-primary-text);
+          text-decoration: none;
+          transition: color var(--fbc-transition);
+      }
+
+      .sidebar nav ul li a:hover {
+          color: var(--fbc-blue-70);
+      }
+
+      .main-content {
+          flex: 1;
+          padding: 20px;
+          background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
+          overflow-y: auto; /* Allow scrolling */
+      }
+
+      .header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+      }
+
+      .card {
+          background-color: var(--fbc-gray-20);
+          border: var(--fbc-borders);
+          border-radius: 5px;
+          padding: 20px;
+          text-align: center;
+          flex: 1;
+          margin: 0 10px;
+      }
+
+      .search-bar {
+          display: flex;
+          margin-bottom: 20px;
+      }
+
+      .search-bar input {
+          flex: 1;
+          padding: 10px;
+          border: var(--fbc-borders);
+          border-radius: 5px;
+          margin-right: 10px;
+      }
+
+      .search-bar button {
+          padding: 10px 15px;
+          background-color: var(--fbc-blue-60);
+          color: var(--fbc-white);
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color var(--fbc-transition);
+      }
+
+      .search-bar button:hover {
+          background-color: var(--fbc-blue-70);
+      }
+
+      .data-card {
+          margin-top: 20px;
+          border: var(--fbc-borders);
+          border-radius: 5px;
+          padding: 20px;
+          background-color: var(--fbc-gray-20);
+      }
+
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 10px;
+      }
+
+      th, td {
+          padding: 10px;
+          border: var(--fbc-borders);
+          text-align: left;
+      }
+
+      th {
+          background-color: var(--fbc-light-gray);
+      }
+
+      /* Slider styles */
+      .slider-container {
+          margin-top: 20px;
+      }
+
+      .slider {
+          width: 100%;
+      }
+
+      @media (max-width: 768px) {
+          .sidebar {
+              width: 200px; /* Make sidebar narrower on smaller screens */
+          }
+
+          .header {
+              flex-direction: column; /* Stack header elements on smaller screens */
+          }
+
+          .card {
+              flex: 1 0 100%; /* Allow cards to take full width */
+              margin-bottom: 10px; /* Space between cards */
+          }
+
+          .search-bar {
+              flex-direction: column; /* Stack search bar elements */
+          }
+
+          .search-bar input {
+              margin-bottom: 10px; /* Space between input and button */
+              margin-right: 0; /* Remove margin right */
+          }
+
+          .data-card {
+              padding: 10px;
+          }
+
+          table, th, td {
+              font-size: 12px;
+          }
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>AstroDash</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">🌍 Dashboard</a></li>
+                    <li><a href="/search">🔍 Search</a></li>
+                    <li><a href="/about">ℹ️ About</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="card">
+                    <h2>59.1°</h2>
+                    <p>Low Temp</p>
+                </div>
+                <div class="card">
+                    <h2 id="time">06:16:07</h2>
+                    <p>Moon Rise</p>
+                </div>
+                <div class="card">
+                    <h2>🌒</h2>
+                    <p>Moon Phase</p>
+                </div>
+            </header>
+            <section class="dashboard">
+                <div class="search-bar">
+                    <input type="date" id="date-input" placeholder="Enter Date">
+                    <button id="search-button">Search</button>
+                </div>
+                <div class="slider-container">
+                    <label for="phase-slider">Filter by Moon Phase:</label>
+                    <input type="range" id="phase-slider" class="slider" min="0" max="3" step="1">
+                </div>
+                <div class="slider-container">
+                    <label for="temp-slider">Adjust Temperature:</label>
+                    <input type="range" id="temp-slider" class="slider" min="0" max="100" value="59.1" step="0.1">
+                </div>
+                <div class="data-card">
+                    <h3>Moon Phase Data</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Temperature</th>
+                                <th>Moon Rise</th>
+                                <th>Moon Set</th>
+                                <th>Moon Phase</th>
+                            </tr>
+                        </thead>
+                        <tbody id="moon-data">
+                            <!-- Data rows will be appended here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

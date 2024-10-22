@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('.src/assets/galaxypoto.jpeg'); /* Add your background image */
+    background-size: cover;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.search {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.data-list {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+h3 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.summary-statistics {
+    text-align: center;
+    margin: 20px 0;
+}
+
