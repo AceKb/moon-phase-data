@@ -31,7 +31,8 @@ added an about page
 
 Here's a walkthrough of implemented user stories:
 
-https://www.loom.com/share/1f5a7e44e9524995a955b9e69a96d6c0?sid=cc7fbcc4-14cb-4e33-9c98-b28c7b060222
+<img src='screen-recorder-tue-oct-29-2024-01-24-40.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  loom
