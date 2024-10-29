@@ -12,7 +12,7 @@ The following **required** functionality is completed:
 
 - [ X] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
 - [x ] **Clicking on an item in the list view displays more details about it**
-  - [ ] To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.
+  - [ x] To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.
 - [ x] **Clicking on an item has a direct, unique link to that item's detail view page**
   - [ X] To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.  
 
@@ -41,8 +41,7 @@ GIF created with ...  loom
 [peek](https://github.com/phw/peek) for Linux. -->
 
 ## Notes
-
-Describe any challenges encountered while building the app.
+common sense
 
 ## License
 
