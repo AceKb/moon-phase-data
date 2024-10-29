@@ -1,15 +1,18 @@
 // src/App.jsx
-
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import './App.css'; // Add your styles here
+import Details from './components/Details';
 
 const App = () => {
-    return (
-        <div className="App">
-            <Dashboard />
-        </div>
-    );
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Dashboard} />
+        <Route path="/details/:date" component={Details} />
+      </Switch>
+    </Router>
+  );
 };
 
 export default App;

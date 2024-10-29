@@ -5,197 +5,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AstroDash</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      :root {
-          --fbc-blue-60: #f30606;
-          --fbc-blue-70: #beb6bc;
-          --fbc-gray-20: #ededf0;
-          --fbc-light-gray: #F0F0F4;
-          --fbc-white: #ffffff;
-          --fbc-transition: all .15s cubic-bezier(.07,.95,0,1);
-          --fbc-borders: 1px solid #ededf0;
-          --fbc-primary-text: #15141A;
-          --fbc-secondary-text: #5B5B66;
-          --fbc-font-size: 13px;
-      }
+        :root {
+            --fbc-blue-60: #f30606;
+            --fbc-blue-70: #beb6bc;
+            --fbc-gray-20: #ededf0;
+            --fbc-light-gray: #F0F0F4;
+            --fbc-white: #ffffff;
+            --fbc-transition: all .15s cubic-bezier(.07,.95,0,1);
+            --fbc-borders: 1px solid #ededf0;
+            --fbc-primary-text: #15141A;
+            --fbc-secondary-text: #5B5B66;
+            --fbc-font-size: 13px;
+        }
 
-      body {
-          background: url('./src/components/galaxypoto.jpeg') no-repeat center center fixed;
-          background-size: cover;  
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-      }
+        body {
+            background: url('./src/components/galaxypoto.jpeg') no-repeat center center fixed;
+            background-size: cover;  
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--fbc-primary-text);
+        }
 
-      .container {
-          display: flex;
-          height: 100vh;
-          overflow: hidden; /* Prevent overflow */
-      }
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-      .sidebar {
-          background-color: rgba(240, 240, 240, 0.8); /* Light grey transparent */
-          color: var(--fbc-primary-text);
-          padding: 20px;
-          width: 250px;
-          display: flex;
-          flex-direction: column; /* Align items vertically */
-      }
+        .sidebar {
+            background-color: rgba(240, 240, 240, 0.8);
+            color: var(--fbc-primary-text);
+            padding: 20px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
 
-      .sidebar h1 {
-          font-size: 24px;
-          margin-bottom: 20px;
-      }
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-      .sidebar nav ul {
-          list-style-type: none;
-          padding: 0;
-          flex-grow: 1; /* Allow nav to grow */
-      }
+        .sidebar nav ul {
+            list-style-type: none;
+            padding: 0;
+            flex-grow: 1;
+        }
 
-      .sidebar nav ul li {
-          margin: 10px 0;
-      }
+        .sidebar nav ul li {
+            margin: 10px 0;
+        }
 
-      .sidebar nav ul li a {
-          color: var(--fbc-primary-text);
-          text-decoration: none;
-          transition: color var(--fbc-transition);
-      }
+        .sidebar nav ul li a {
+            color: var(--fbc-primary-text);
+            text-decoration: none;
+            transition: color var(--fbc-transition);
+        }
 
-      .sidebar nav ul li a:hover {
-          color: var(--fbc-blue-70);
-      }
+        .sidebar nav ul li a:hover {
+            color: var(--fbc-blue-70);
+        }
 
-      .main-content {
-          flex: 1;
-          padding: 20px;
-          background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
-          overflow-y: auto; /* Allow scrolling */
-      }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            overflow-y: auto;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        }
 
-      .header {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 20px;
-      }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-      .card {
-          background-color: var(--fbc-gray-20);
-          border: var(--fbc-borders);
-          border-radius: 5px;
-          padding: 20px;
-          text-align: center;
-          flex: 1;
-          margin: 0 10px;
-      }
+        .card {
+            background-color: var(--fbc-gray-20);
+            border: var(--fbc-borders);
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+        }
 
-      .search-bar {
-          display: flex;
-          margin-bottom: 20px;
-      }
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
 
-      .search-bar input {
-          flex: 1;
-          padding: 10px;
-          border: var(--fbc-borders);
-          border-radius: 5px;
-          margin-right: 10px;
-      }
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: var(--fbc-borders);
+            border-radius: 5px;
+            margin-right: 10px;
+        }
 
-      .search-bar button {
-          padding: 10px 15px;
-          background-color: var(--fbc-blue-60);
-          color: var(--fbc-white);
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color var(--fbc-transition);
-      }
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: var(--fbc-blue-60);
+            color: var(--fbc-white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color var(--fbc-transition);
+        }
 
-      .search-bar button:hover {
-          background-color: var(--fbc-blue-70);
-      }
+        .search-bar button:hover {
+            background-color: var(--fbc-blue-70);
+        }
 
-      .data-card {
-          margin-top: 20px;
-          border: var(--fbc-borders);
-          border-radius: 5px;
-          padding: 20px;
-          background-color: var(--fbc-gray-20);
-      }
+        .data-card {
+            margin-top: 20px;
+            border: var(--fbc-borders);
+            border-radius: 5px;
+            padding: 20px;
+            background-color: var(--fbc-gray-20);
+        }
 
-      table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 10px;
-      }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
 
-      th, td {
-          padding: 10px;
-          border: var(--fbc-borders);
-          text-align: left;
-      }
+        th, td {
+            padding: 10px;
+            border: var(--fbc-borders);
+            text-align: left;
+        }
 
-      th {
-          background-color: var(--fbc-light-gray);
-      }
+        th {
+            background-color: var(--fbc-light-gray);
+        }
 
-      /* Slider styles */
-      .slider-container {
-          margin-top: 20px;
-      }
+        /* Slider styles */
+        .slider-container {
+            margin-top: 20px;
+        }
 
-      .slider {
-          width: 100%;
-      }
+        .slider {
+            width: 100%;
+        }
 
-      @media (max-width: 768px) {
-          .sidebar {
-              width: 200px; /* Make sidebar narrower on smaller screens */
-          }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
 
-          .header {
-              flex-direction: column; /* Stack header elements on smaller screens */
-          }
+            .header {
+                flex-direction: column;
+            }
 
-          .card {
-              flex: 1 0 100%; /* Allow cards to take full width */
-              margin-bottom: 10px; /* Space between cards */
-          }
+            .card {
+                flex: 1 0 100%;
+                margin-bottom: 10px;
+            }
 
-          .search-bar {
-              flex-direction: column; /* Stack search bar elements */
-          }
+            .search-bar {
+                flex-direction: column;
+            }
 
-          .search-bar input {
-              margin-bottom: 10px; /* Space between input and button */
-              margin-right: 0; /* Remove margin right */
-          }
+            .search-bar input {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
 
-          .data-card {
-              padding: 10px;
-          }
+            .data-card {
+                padding: 10px;
+            }
 
-          table, th, td {
-              font-size: 12px;
-          }
-      }
+            table, th, td {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <div class="sidebar">
             <h1>AstroDash</h1>
             <nav>
                 <ul>
-                    <li><a href="/">🌍 Dashboard</a></li>
-                    <li><a href="/search">🔍 Search</a></li>
-                    <li><a href="/about">ℹ️ About</a></li>
+                    <li><a href="#">🏠 Home</a></li>
+                    <li><a href="#">🔍 Search</a></li>
+                    <li><a href="about.html">ℹ️ About</a></li>
+
                 </ul>
             </nav>
-        </aside>
-        <main class="main-content">
+        </div>
+        <div class="main-content">
             <header class="header">
                 <div class="card">
                     <h2>59.1°</h2>
@@ -210,21 +215,26 @@
                     <p>Moon Phase</p>
                 </div>
             </header>
-            <section class="dashboard">
+
+            <div class="header">
+                <h2>Moon Phase Data</h2>
                 <div class="search-bar">
-                    <input type="date" id="date-input" placeholder="Enter Date">
+                    <input type="date" id="date-input">
                     <button id="search-button">Search</button>
                 </div>
+            </div>
+
+            <div class="card">
+                <h3>Moon Phase Data</h3>
                 <div class="slider-container">
-                    <label for="phase-slider">Filter by Moon Phase:</label>
-                    <input type="range" id="phase-slider" class="slider" min="0" max="3" step="1">
+                    <label for="phase-slider">Filter by Moon Phase</label>
+                    <input type="range" id="phase-slider" min="0" max="3">
                 </div>
                 <div class="slider-container">
-                    <label for="temp-slider">Adjust Temperature:</label>
-                    <input type="range" id="temp-slider" class="slider" min="0" max="100" value="59.1" step="0.1">
+                    <label for="temp-slider">Minimum Temperature: <span id="temp-display">0°</span></label>
+                    <input type="range" id="temp-slider" min="0" max="100">
                 </div>
                 <div class="data-card">
-                    <h3>Moon Phase Data</h3>
                     <table>
                         <thead>
                             <tr>
@@ -232,18 +242,132 @@
                                 <th>Temperature</th>
                                 <th>Moon Rise</th>
                                 <th>Moon Set</th>
-                                <th>Moon Phase</th>
+                                <th>Phase</th>
+                                <th>Details</th>
                             </tr>
                         </thead>
-                        <tbody id="moon-data">
-                            <!-- Data rows will be appended here -->
-                        </tbody>
+                        <tbody id="moon-data"></tbody>
                     </table>
                 </div>
-            </section>
-        </main>
+            </div>
+            <div id="details-section" style="display: none;">
+                <h2>Details</h2>
+                <p id="details-content"></p>
+                <a id="details-link" href="#" target="_blank">View More</a>
+            </div>
+            
+
+            <div class="card">
+                <h3>Temperature Chart</h3>
+                <canvas id="temp-chart"></canvas>
+            </div>
+            
+            <div class="card">
+                <h3>Moon Phase Chart</h3>
+                <canvas id="moon-phase-chart"></canvas>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const moonPhaseData = [
+            { date: '2024-10-27', temperature: '41.5 °F', moonRise: '02:34:13', moonSet: '15:00:00', phase: '🌑', description: 'New moon, no illumination.' },
+            { date: '2024-10-28', temperature: '39.5 °F', moonRise: '03:36:25', moonSet: '16:00:00', phase: '🌒', description: 'Waxing crescent, 5% illuminated.' },
+            { date: '2024-10-29', temperature: '42.6 °F', moonRise: '04:34:03', moonSet: '17:00:00', phase: '🌒', description: 'Waxing crescent, 10% illuminated.' },
+            { date: '2024-10-30', temperature: '46.5 °F', moonRise: '05:30:54', moonSet: '18:00:00', phase: '🌒', description: 'Waxing crescent, 20% illuminated.' },
+            { date: '2024-10-31', temperature: '47.6 °F', moonRise: '06:28:47', moonSet: '19:00:00', phase: '🌒', description: 'Waxing crescent, 30% illuminated.' },
+            { date: '2024-11-01', temperature: '47.7 °F', moonRise: '07:25:39', moonSet: '20:00:00', phase: '🌓', description: 'First quarter moon, 50% illuminated.' }
+        ];
     
-    <script src="script.js"></script>
+        function renderTable(data) {
+            const tbody = document.getElementById('moon-data');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.date}</td>
+                    <td>${item.temperature}</td>
+                    <td>${item.moonRise}</td>
+                    <td>${item.moonSet}</td>
+                    <td>${item.phase}</td>
+                    <td><button class="details-button" data-description="${item.description}">Details</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+    
+            // Add event listeners for details buttons
+            const detailsButtons = document.querySelectorAll('.details-button');
+            detailsButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const description = button.getAttribute('data-description');
+                    showDetails(description);
+                });
+            });
+        }
+    
+        function showDetails(description) {
+            document.getElementById('details-content').textContent = description;
+            document.getElementById('details-section').style.display = 'block';
+        }
+    
+        renderTable(moonPhaseData);
+    
+        document.getElementById('search-button').addEventListener('click', () => {
+            const inputDate = document.getElementById('date-input').value;
+            const filteredData = moonPhaseData.filter(item => item.date === inputDate);
+            renderTable(filteredData);
+        });
+    
+        // Chart.js setup remains unchanged
+        const ctx = document.getElementById('temp-chart').getContext('2d');
+        const tempChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: moonPhaseData.map(item => item.date),
+                datasets: [{
+                    label: 'Temperature (°F)',
+                    data: moonPhaseData.map(item => parseFloat(item.temperature)),
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    
+        const moonPhaseCounts = {};
+        moonPhaseData.forEach(item => {
+            moonPhaseCounts[item.phase] = (moonPhaseCounts[item.phase] || 0) + 1;
+        });
+    
+        const ctx2 = document.getElementById('moon-phase-chart').getContext('2d');
+        const moonPhaseChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(moonPhaseCounts),
+                datasets: [{
+                    label: 'Moon Phase Count',
+                    data: Object.values(moonPhaseCounts),
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
 </body>
 </html>

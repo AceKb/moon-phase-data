@@ -1,8 +1,8 @@
-# Web Development Project 5 - *Name of App Here*
+# Web Development Project 6 - *moon-phase-data*
 
-Submitted by: **Your Name Here**
+Submitted by: **Sara Mebarki**
 
-This web app: **insert description**
+This web app: **a data dashboard designed to provide insightful information about moon phases and temperature data. Here, you can explore various moon phases, their corresponding temperatures, and visualize this data through interactive charts. **
 
 Time spent: **X** hours spent in total
 
@@ -10,31 +10,31 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-- [x ] **The list displays a list of data fetched using an API call**
-- [x ] **Data uses the useEffect React hook and async/await syntax**
-- [ x] **The app dashboard includes at least three summary statistics about the data such as**
-  - [x ] *Date 	Temperature 	Moon Rise 	Moon Set 	Moon Phase*
-- [ x] **A search bar allows the user to search for an item in the fetched data**
-- [ x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [ X] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
+- [x ] **Clicking on an item in the list view displays more details about it**
+  - [ ] To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.
+- [ x] **Clicking on an item has a direct, unique link to that item's detail view page**
+  - [ X] To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.  
+
 
 The following **optional** features are implemented:
 
-- [x ] Multiple filters can be applied simultaneously
-- [ x] Filters use different input types such as a text input, a selection, or a slider
-- [ x] The user can enter specific bounds for filter values
+- [x ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [x ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [x ] List anything else that you added to improve the site's functionality!
+added an about page 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='AstroDash — Mozilla Firefox - 22 October 2024.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://www.loom.com/share/1f5a7e44e9524995a955b9e69a96d6c0?sid=cc7fbcc4-14cb-4e33-9c98-b28c7b060222
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with ...  loom
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -46,7 +46,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2024] [AceKb]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

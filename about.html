@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AstroDash</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('src/components/galaxypoto.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Full height */
+}
+
+.sidebar {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    width: 250px; /* Fixed width for sidebar */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar h1 {
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    color: #ffa500; /* Change color on hover */
+}
+
+.main-content {
+    flex: 1; /* Take remaining space */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    overflow-y: auto; /* Scroll if content is too long */
+}
+
+.main-content header {
+    margin-bottom: 20px;
+}
+
+.about-content h3 {
+    margin-top: 0;
+}
+
+.about-content ul {
+    padding-left: 20px; /* Indent for list */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>AstroDash</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="#">🔍 Search</a></li>
+                    <li><a href="about.html">ℹ️ About</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content">
+            <header>
+                
+            </header>
+            <div class="about-content">
+                <h3>Welcome to AstroDash!</h3>
+                <p>
+                    AstroDash is a data dashboard designed to provide insightful information about moon phases and temperature data. 
+                    Here, you can explore various moon phases, their corresponding temperatures, and visualize this data through interactive charts.
+                </p>
+                <h4>Features:</h4>
+                <ul>
+                    <li>Interactive charts for temperature and moon phases.</li>
+                    <li>Filter data by date and moon phase.</li>
+                    <li>Detailed information about specific moon phases.</li>
+                </ul>
+                <h4>Get in Touch:</h4>
+                <p>If you have any questions or feedback, feel free to reach out!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
